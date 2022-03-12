@@ -51,7 +51,7 @@ static int cam_csiphy_notify_secure_mode(struct csiphy_device *csiphy_dev,
 		return -EINVAL;
 	}
 
-	CAM_INFO(CAM_CSIPHY, "PHY : %d offset: %d SEC: %d Mask: %d",
+	CAM_INFO(CAM_CSIPHY, "PHY : %d offset: %d SEC: %d Mask: %llu",
 			csiphy_dev->soc_info.index,
 			offset,
 			protect,
@@ -261,7 +261,7 @@ int32_t cam_cmd_buf_parser(struct csiphy_device *csiphy_dev,
 
 rel_pkt_buf:
 	if (cam_mem_put_cpu_buf((int32_t) cfg_dev->packet_handle))
-		CAM_WARN(CAM_CSIPHY, "Failed to put packet Mem address: 0x%x",
+		CAM_WARN(CAM_CSIPHY, "Failed to put packet Mem address: 0x%llx",
 			 cfg_dev->packet_handle);
 
 	return rc;

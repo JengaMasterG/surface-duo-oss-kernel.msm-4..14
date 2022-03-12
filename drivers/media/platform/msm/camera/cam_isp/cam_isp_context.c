@@ -1024,7 +1024,7 @@ static int __cam_isp_ctx_notify_sof_in_activated_state(
 			((request_id - ctx_isp->req_info.reported_req_id) >
 			1)){
 			CAM_INFO(CAM_ISP,
-				"ctx:%d curr req id: %u last reported id:%u",
+				"ctx:%d curr req id: %llu last reported id:%llu",
 				ctx->ctx_id, request_id,
 				ctx_isp->req_info.reported_req_id);
 
@@ -2254,7 +2254,7 @@ static int __cam_isp_ctx_dump_req_info(struct cam_context *ctx,
 	uint8_t *dst;
 
 	if (!req || !ctx || !offset || !cpu_addr || !buf_len) {
-		CAM_ERR(CAM_ISP, "Invalid parameters %pK %pK %u %pK %pK %pK ",
+		CAM_ERR(CAM_ISP, "Invalid parameters %pK %pK %p %zuK %zuK ",
 			req, ctx, offset, cpu_addr, buf_len);
 		return -EINVAL;
 	}
@@ -2338,7 +2338,7 @@ hw_dump:
 		/* we take for isp sw information to be max as 2048*/
 		if ((buf_len - dump_info->offset) <
 			CAM_ISP_CTX_DUMP_MIN_LENGTH) {
-			CAM_ERR(CAM_ISP, "Dump buffer exhaust %u %u",
+			CAM_ERR(CAM_ISP, "Dump buffer exhaust %zu %u",
 				buf_len, dump_info->offset);
 			goto end;
 		}
