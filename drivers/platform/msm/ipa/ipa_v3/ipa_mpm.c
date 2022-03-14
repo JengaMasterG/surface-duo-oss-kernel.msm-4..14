@@ -547,7 +547,7 @@ static dma_addr_t ipa_mpm_smmu_map(void *va_addr,
 	}
 
 	if (carved_iova >= cb->va_end) {
-		IPA_MPM_ERR("running out of carved_iova %x\n", carved_iova);
+		IPA_MPM_ERR("running out of carved_iova %lx\n", carved_iova);
 		ipa_assert();
 	}
 	/*
@@ -1686,7 +1686,7 @@ int ipa_mpm_notify_wan_state(struct wan_ioctl_notify_wan_state *state)
 		ret = ipa_mpm_vote_unvote_pcie_clk(CLK_ON, probe_id,
 			false, &is_acted);
 		if (ret) {
-			IPA_MPM_ERR("Err %d cloking on PCIe clk %d\n", ret);
+			IPA_MPM_ERR("Err cloking on PCIe clk %d\n", ret);
 			return ret;
 		}
 		status = ipa_mpm_start_stop_mhip_chan(

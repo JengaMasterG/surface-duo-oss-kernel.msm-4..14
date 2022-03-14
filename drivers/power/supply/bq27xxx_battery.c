@@ -2296,7 +2296,7 @@ static int force_temperature_write(void *data, u64 val)
 	return 0;
 }
 DEFINE_SIMPLE_ATTRIBUTE(force_temperature_ops, force_temperature_read,
-			force_temperature_write, "%d\n");
+			force_temperature_write, "%llx\n");
 
 static int force_rsoc_read(void *data, u64 *val)
 {
@@ -2312,7 +2312,7 @@ static int force_rsoc_write(void *data, u64 val)
 	return 0;
 }
 DEFINE_SIMPLE_ATTRIBUTE(force_rsoc_ops, force_rsoc_read,
-			force_rsoc_write, "%d\n");
+			force_rsoc_write, "%llu\n");
 
 static int fg_register_read_open(struct inode *inode, struct file *file)
 {

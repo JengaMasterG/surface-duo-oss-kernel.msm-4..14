@@ -1221,25 +1221,25 @@ static ssize_t battery_protection_state_read(struct kobject *kobj, struct kobj_a
 static ssize_t battery_protection_bpc_hvtcount_pack1_read(struct kobject *kobj, struct kobj_attribute *attr, char *buf)
 {
     uint32_t bpc_eqvTimeAtHvt_sec = CONVERT_MIN_TO_SEC(BatteryTelemetry.BatteryTelemetryBinary[FG_001].BpcTelemetry.BPCEqvTimeat35C);
-    return sprintf(buf, "%ld", bpc_eqvTimeAtHvt_sec);
+    return sprintf(buf, "%d", bpc_eqvTimeAtHvt_sec);
 }
 
 static ssize_t battery_protection_bpc_hvtcount_pack2_read(struct kobject *kobj, struct kobj_attribute *attr, char *buf)
 {
     uint32_t bpc_eqvTimeAtHvt_sec = CONVERT_MIN_TO_SEC(BatteryTelemetry.BatteryTelemetryBinary[FG_002].BpcTelemetry.BPCEqvTimeat35C);
-    return sprintf(buf, "%ld", bpc_eqvTimeAtHvt_sec);
+    return sprintf(buf, "%d", bpc_eqvTimeAtHvt_sec);
 }
 
 static ssize_t battery_protection_bsc_hvtcount_pack1_read(struct kobject *kobj, struct kobj_attribute *attr, char *buf)
 {
     uint32_t bsc_eqvTimeAtHvt_sec = CONVERT_MIN_TO_SEC(BatteryTelemetry.BatteryTelemetryBinary[FG_001].BscTelemetry.BSCHvtcount);    
-    return sprintf(buf, "%ld", bsc_eqvTimeAtHvt_sec);
+    return sprintf(buf, "%d", bsc_eqvTimeAtHvt_sec);
 }
 
 static ssize_t battery_protection_bsc_hvtcount_pack2_read(struct kobject *kobj, struct kobj_attribute *attr, char *buf)
 {
     uint32_t bsc_eqvTimeAtHvt_sec = CONVERT_MIN_TO_SEC(BatteryTelemetry.BatteryTelemetryBinary[FG_002].BscTelemetry.BSCHvtcount);
-    return sprintf(buf, "%ld", bsc_eqvTimeAtHvt_sec);
+    return sprintf(buf, "%d", bsc_eqvTimeAtHvt_sec);
 }
 
 static struct kobj_attribute battery_protection_state_attr =
@@ -1405,7 +1405,7 @@ static int force_pack2_bsc_hvtcount_write(void *data, u64 val)
     return 0;
 }
 DEFINE_SIMPLE_ATTRIBUTE(force_pack2_bsc_hvtcount_ops, force_pack2_bsc_hvtcount_read,
-			force_pack2_bsc_hvtcount_write, "%d\n");
+			force_pack2_bsc_hvtcount_write, "%llx\n");
 
 static int force_pack1_bsc_hvtcount_read(void *data, u64 *val)
 {
@@ -1421,7 +1421,7 @@ static int force_pack1_bsc_hvtcount_write(void *data, u64 val)
     return 0;
 }
 DEFINE_SIMPLE_ATTRIBUTE(force_pack1_bsc_hvtcount_ops, force_pack1_bsc_hvtcount_read,
-			force_pack1_bsc_hvtcount_write, "%d\n");
+			force_pack1_bsc_hvtcount_write, "%llx\n");
 
 static int force_pack2_bpc_hvtcount_read(void *data, u64 *val)
 {
@@ -1437,7 +1437,7 @@ static int force_pack2_bpc_hvtcount_write(void *data, u64 val)
     return 0;
 }
 DEFINE_SIMPLE_ATTRIBUTE(force_pack2_bpc_hvtcount_ops, force_pack2_bpc_hvtcount_read,
-			force_pack2_bpc_hvtcount_write, "%d\n");
+			force_pack2_bpc_hvtcount_write, "%llx\n");
 
 static int force_pack1_bpc_hvtcount_read(void *data, u64 *val)
 {
@@ -1453,7 +1453,7 @@ static int force_pack1_bpc_hvtcount_write(void *data, u64 val)
     return 0;
 }
 DEFINE_SIMPLE_ATTRIBUTE(force_pack1_bpc_hvtcount_ops, force_pack1_bpc_hvtcount_read,
-			force_pack1_bpc_hvtcount_write, "%d\n");
+			force_pack1_bpc_hvtcount_write, "%llx\n");
 
 static int force_disable_bpc_read(void *data, u64 *val)
 {
@@ -1469,7 +1469,7 @@ static int force_disable_bpc_write(void *data, u64 val)
     return 0;
 }
 DEFINE_SIMPLE_ATTRIBUTE(force_disable_bpc_ops, force_disable_bpc_read,
-			force_disable_bpc_write, "%d\n");
+			force_disable_bpc_write, "%llx\n");
 
 static int force_disable_bsc_read(void *data, u64 *val)
 {
@@ -1485,7 +1485,7 @@ static int force_disable_bsc_write(void *data, u64 val)
     return 0;
 }
 DEFINE_SIMPLE_ATTRIBUTE(force_disable_bsc_ops, force_disable_bsc_read,
-			force_disable_bsc_write, "%d\n");
+			force_disable_bsc_write, "%llx\n");
 
 void MSEBatteryProtectionDebugfs(struct dentry *parent, void *data)
 {

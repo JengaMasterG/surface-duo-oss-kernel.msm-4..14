@@ -2471,7 +2471,7 @@ static int __cam_isp_ctx_flush_req_in_top_state(
 	struct cam_isp_start_args         start_isp;
 	struct cam_hw_reset_args          reset_args;
 	if (flush_req->type == CAM_REQ_MGR_FLUSH_TYPE_ALL) {
-		CAM_INFO(CAM_ISP, "ctx id:%d Last request id to flush is %lld",
+		CAM_INFO(CAM_ISP, "ctx id:%d Last request id to flush is %llx",
 			ctx->ctx_id, flush_req->req_id);
 		ctx->last_flush_req = flush_req->req_id;
 	}
@@ -2488,7 +2488,7 @@ static int __cam_isp_ctx_flush_req_in_top_state(
 			ctx_isp->req_info.reported_req_id,
 			ctx_isp->req_info.last_bufdone_req_id);
 		CAM_INFO_RATE_LIMIT_CUSTOM(CAM_ISP, 5, 20,
-			"current time:%lld last apply time:%lld, reported req time:%lld, buf done time:%lld",
+			"current time:%d last apply time:%lld, reported req time:%lld, buf done time:%lld",
 			jiffies_to_msecs(jiffies),
 			ctx_isp->req_info.last_applied_time_stamp,
 			ctx_isp->req_info.last_reported_id_time_stamp,
@@ -3435,7 +3435,7 @@ static int __cam_isp_ctx_config_dev_in_top_state(
 		goto put_ref;
 
 	if (cam_mem_put_cpu_buf((int32_t) cmd->packet_handle))
-		CAM_WARN(CAM_ISP, "Can not put packet address : 0x%x",
+		CAM_WARN(CAM_ISP, "Can not put packet address : 0x%llu",
 			cmd->packet_handle);
 
 	CAM_DBG(CAM_REQ,
@@ -3452,7 +3452,7 @@ put_ref:
 	}
 free_cpu_buf:
 	if (cam_mem_put_cpu_buf((int32_t) cmd->packet_handle))
-		CAM_WARN(CAM_ISP, "Can not put packet address: 0x%x",
+		CAM_WARN(CAM_ISP, "Can not put packet address: 0x%llu",
 			cmd->packet_handle);
 free_req:
 	spin_lock_bh(&ctx->lock);

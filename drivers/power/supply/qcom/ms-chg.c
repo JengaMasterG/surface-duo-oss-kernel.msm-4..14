@@ -1693,7 +1693,7 @@ static int force_clcfg_write(void *data, u64 val)
     return 0;
 }
 DEFINE_SIMPLE_ATTRIBUTE(force_clcfg_ops, force_clcfg_read,
-			force_clcfg_write, "%d\n");
+			force_clcfg_write, "%llx\n");
 
 void MSEHwDebugfs(struct dentry *parent, void *data)
 {

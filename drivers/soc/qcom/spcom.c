@@ -408,7 +408,7 @@ static int spcom_rx(struct spcom_channel *ch,
 			goto exit_err;
 		}
 	} else {
-		pr_debug("pending data size [%zu], requested size [%zu], ch->txn_id %d\n",
+		pr_debug("pending data size [%zu], requested size [%u], ch->txn_id %d\n",
 			 ch->actual_rx_size, size, ch->txn_id);
 	}
 	if (!ch->rpmsg_rx_buf) {
