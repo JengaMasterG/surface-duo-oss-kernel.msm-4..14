@@ -936,8 +936,8 @@ static int spcom_handle_lock_ion_buf_command(struct spcom_channel *ch,
 			ch->dmabuf_fd_table[i] = fd;
 			pr_debug("ch [%s] locked ion buf #%d fd [%d] dma_buf=0x%x\n",
 				ch->name, i,
-				ch->dmabuf_fd_table[i],
-				ch->dmabuf_handle_table[i]);
+				(int)ch->dmabuf_fd_table[i],
+				(int)ch->dmabuf_handle_table[i]);
 			mutex_unlock(&ch->lock);
 			return 0;
 		}
