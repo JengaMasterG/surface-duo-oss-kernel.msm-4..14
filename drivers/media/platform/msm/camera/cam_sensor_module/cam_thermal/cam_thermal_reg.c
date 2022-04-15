@@ -36,7 +36,7 @@ static int cam_thermal_reg_get_temp(void *data, int *temp)
 	return 0;
 }
 
-static int cam_thermal_is_sensor_supported()
+static int cam_thermal_is_sensor_supported(void)
 {
 	if(SUPPORTED_SENSOR_ID == s_cam_ctrl->sensordata->slave_info.sensor_id)
 	{
