@@ -151,9 +151,9 @@ void dwc3_dbg_dma_unmap(struct dwc3 *dwc, u8 ep_num, struct dwc3_request *req)
 		return;
 
 	ipc_log_string(dwc->dwc_dma_ipc_log_ctxt,
-		"%02X-%-3.3s %-25.25s 0x%pK 0x%lx %u 0x%lx %d", ep_num >> 1,
+		"%02X-%-3.3s %-25.25s 0x%pK 0x%lx %u 0x%lx %lx", ep_num >> 1,
 		ep_num & 1 ? "IN":"OUT", "UNMAP", &req->request,
-		req->request.dma, req->request.length, req->trb_dma,
+		(long int)req->request.dma, req->request.length, (long int)req->trb_dma,
 		req->trb->ctrl & DWC3_TRB_CTRL_HWO);
 }
 
@@ -165,7 +165,7 @@ void dwc3_dbg_dma_map(struct dwc3 *dwc, u8 ep_num, struct dwc3_request *req)
 	ipc_log_string(dwc->dwc_dma_ipc_log_ctxt,
 		"%02X-%-3.3s %-25.25s 0x%pK 0x%lx %u 0x%lx", ep_num >> 1,
 		ep_num & 1 ? "IN":"OUT", "MAP", &req->request, req->request.dma,
-		req->request.length, req->trb_dma);
+		req->request.length, (long int)req->trb_dma);
 }
 
 void dwc3_dbg_dma_dequeue(struct dwc3 *dwc, u8 ep_num, struct dwc3_request *req)
