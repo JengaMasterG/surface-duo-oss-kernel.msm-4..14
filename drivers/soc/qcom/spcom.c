@@ -1008,10 +1008,10 @@ static int spcom_handle_unlock_ion_buf_command(struct spcom_channel *ch,
 			if (!ch->dmabuf_handle_table[i])
 				continue;
 			if (ch->dmabuf_handle_table[i] == dma_buf) {
-				pr_debug("ch [%s] unlocked ion buf #%d fd [%d] dma_buf=0x%x\n",
+				pr_debug("ch [%s] unlocked ion buf #%d fd [%d] dma_buf=0x%d\n",
 					ch->name, i,
 					ch->dmabuf_fd_table[i],
-					ch->dmabuf_handle_table[i]);
+					(int)ch->dmabuf_handle_table[i]);
 				dma_buf_put(ch->dmabuf_handle_table[i]);
 				ch->dmabuf_handle_table[i] = NULL;
 				ch->dmabuf_fd_table[i] = -1;
@@ -1378,7 +1378,7 @@ static int spcom_device_release(struct inode *inode, struct file *filp)
 	ch->pid = 0;
 	if (ch->rpmsg_rx_buf) {
 		pr_debug("ch [%s] discarting unconsumed rx packet actual_rx_size=%d\n",
-		       name, ch->actual_rx_size);
+		       name, (int)ch->actual_rx_size);
 		kfree(ch->rpmsg_rx_buf);
 		ch->rpmsg_rx_buf = NULL;
 	}
