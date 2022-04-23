@@ -773,7 +773,7 @@ static int imp_mhi_probe_cb(struct mhi_device *mhi_dev,
 		return -EINVAL;
 	}
 
-	IMP_DBG("chdb-base=0x%x\n", imp_ctx->dev_info.chdb_base);
+	IMP_DBG("chdb-base=0x%x\n", (int)imp_ctx->dev_info.chdb_base);
 
 	ret = mhi_get_event_ring_db_base(mhi_dev, &imp_ctx->dev_info.erdb_base);
 	if (ret) {
@@ -781,7 +781,7 @@ static int imp_mhi_probe_cb(struct mhi_device *mhi_dev,
 		return -EINVAL;
 	}
 
-	IMP_DBG("erdb-base=0x%x\n", imp_ctx->dev_info.erdb_base);
+	IMP_DBG("erdb-base=0x%x\n", (int)imp_ctx->dev_info.erdb_base);
 
 	/* vote for IPA clock. IPA clock will be devoted when MHI enters LPM */
 	IPA_ACTIVE_CLIENTS_INC_SPECIAL("IMP");
