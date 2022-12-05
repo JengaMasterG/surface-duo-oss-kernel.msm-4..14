@@ -285,7 +285,7 @@ void ConfigLineEdit::show(ConfigItem* i)
 	if (sym_get_string_value(item->menu->sym))
 		setText(QString::fromLocal8Bit(sym_get_string_value(item->menu->sym)));
 	else
-		setText(QString::null);
+		setText(QString());
 	Parent::show();
 	setFocus();
 }
