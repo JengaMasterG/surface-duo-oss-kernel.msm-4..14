@@ -1091,7 +1091,7 @@ void ConfigInfoView::menuInfo(void)
 			if (sym->name) {
 				head += " (";
 				if (showDebug())
-					head += QString().sprintf("<a href=\"s%p\">", sym);
+					head += QString().asprintf("<a href=\"s%p\">", sym);
 				head += print_filter(sym->name);
 				if (showDebug())
 					head += "</a>";
@@ -1100,7 +1100,7 @@ void ConfigInfoView::menuInfo(void)
 		} else if (sym->name) {
 			head += "<big><b>";
 			if (showDebug())
-				head += QString().sprintf("<a href=\"s%p\">", sym);
+				head += QString().asprintf("<a href=\"s%p\">", sym);
 			head += print_filter(sym->name);
 			if (showDebug())
 				head += "</a>";
@@ -1128,7 +1128,7 @@ void ConfigInfoView::menuInfo(void)
 		}
 	}
 	if (showDebug())
-		debug += QString().sprintf("defined at %s:%d<br><br>", _menu->file->name, _menu->lineno);
+		debug += QString().asprintf("defined at %s:%d<br><br>", _menu->file->name, _menu->lineno);
 
 	setText(head + debug + help);
 }
@@ -1151,7 +1151,7 @@ QString ConfigInfoView::debug_info(struct symbol *sym)
 		switch (prop->type) {
 		case P_PROMPT:
 		case P_MENU:
-			debug += QString().sprintf("prompt: <a href=\"m%p\">", prop->menu);
+			debug += QString().asprintf("prompt: <a href=\"m%p\">", prop->menu);
 			debug += print_filter(_(prop->text));
 			debug += "</a><br>";
 			break;
@@ -1224,7 +1224,7 @@ void ConfigInfoView::expr_print_help(void *data, struct symbol *sym, const char 
 	QString str2 = print_filter(str);
 
 	if (sym && sym->name && !(sym->flags & SYMBOL_CONST)) {
-		*text += QString().sprintf("<a href=\"s%p\">", sym);
+		*text += QString().asprintf("<a href=\"s%p\">", sym);
 		*text += str2;
 		*text += "</a>";
 	} else
