@@ -122,7 +122,7 @@ static void mhi_reg_write_enqueue(struct mhi_controller *mhi_cntrl,
 
 	q_index = q_index & (REG_WRITE_QUEUE_LEN - 1);
 
-	MHI_ASSERT(mhi_cntrl->reg_write_q[q_index].valid, "queue full idx %d", q_index);
+	MHI_ASSERT(mhi_cntrl->reg_write_q[q_index].valid, "queue full idx");
 
 	mhi_cntrl->reg_write_q[q_index].reg_addr =  reg_addr;
 	mhi_cntrl->reg_write_q[q_index].val = val;
@@ -1394,11 +1394,7 @@ int mhi_process_tsync_ev_ring(struct mhi_controller *mhi_cntrl,
 	mutex_lock(&mhi_cntrl->tsync_mutex);
 
 	if (unlikely(mhi_tsync->int_sequence != sequence)) {
-<<<<<<< HEAD
 		MHI_ASSERT(1, "Unexpected response:0x%s Expected:0x%s\n",
-=======
-		MHI_ASSERT(1, "Unexpected response:0x%x Expected:0x%lx\n",
->>>>>>> parent of cb62d6543a0e... MHI Driver Format fix for pmOS 3
 		 sequence, mhi_tsync->int_sequence);
 
 		mhi_device_put(mhi_cntrl->mhi_dev,
@@ -2738,7 +2734,7 @@ int mhi_get_remote_time(struct mhi_device *mhi_dev,
 
 	mhi_cntrl->lpm_enable(mhi_cntrl, mhi_cntrl->priv_data);
 
-	MHI_VERB("time DB request with seq:0x%lx\n", mhi_tsync->int_sequence);
+	MHI_VERB("time DB request with seq:0x%x\n", mhi_tsync->int_sequence);
 
 	mhi_tsync->db_response_pending = true;
 	init_completion(&mhi_tsync->db_completion);
