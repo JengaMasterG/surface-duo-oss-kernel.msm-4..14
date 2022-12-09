@@ -1394,7 +1394,7 @@ int mhi_process_tsync_ev_ring(struct mhi_controller *mhi_cntrl,
 	mutex_lock(&mhi_cntrl->tsync_mutex);
 
 	if (unlikely(mhi_tsync->int_sequence != sequence)) {
-		MHI_ASSERT(1, "Unexpected response:0x%s Expected:0x%s\n",
+		MHI_ASSERT(1, "Unexpected response:0x%x Expected:0x%x\n",
 		 sequence, mhi_tsync->int_sequence);
 
 		mhi_device_put(mhi_cntrl->mhi_dev,
