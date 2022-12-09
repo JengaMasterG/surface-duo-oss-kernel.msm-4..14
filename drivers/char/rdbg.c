@@ -136,11 +136,18 @@ struct rdbg_device {
 
 int registers[32] = {0};
 static struct rdbg_device g_rdbg_instance = {
-	{0},
-	NULL,
-	0,
-	SMP2P_NUM_PROCS,
-	NULL
+	.cdev = { 
+		.kobj = 0,
+		.owner = NULL,
+		.ops = NULL,
+		.list = {0},
+		.dev = NULL
+		.count = 0,	
+	},
+	.class = NULL,
+	.dev_no = 0,
+	.num_devices = SMP2P_NUM_PROCS,
+	.rdbg_data = NULL
 };
 
 struct processor_specific_info {
