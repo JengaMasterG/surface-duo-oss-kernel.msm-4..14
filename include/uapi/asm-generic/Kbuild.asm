@@ -1,5 +1,5 @@
 #
-# Headers that are mandatory in usr/include/asm-generic/
+# Headers that are mandatory in usr/include/asm/
 #
 mandatory-y += auxvec.h
 mandatory-y += bitsperlong.h

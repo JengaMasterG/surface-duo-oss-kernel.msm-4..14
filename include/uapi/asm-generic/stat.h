@@ -17,7 +17,7 @@
  * not have to start with.
  */
 
-#include <asm-generic/bitsperlong.h>
+#include <asm/bitsperlong.h>
 
 #define STAT_HAVE_NSEC 1
 
