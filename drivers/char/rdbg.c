@@ -137,12 +137,12 @@ struct rdbg_device {
 int registers[32] = {0};
 static struct rdbg_device g_rdbg_instance = {
 	.cdev = { 
-		.kobj = {0},
+		.kobj = 0,
 		.owner = NULL,
 		.ops = NULL,
 		.list = {0},
-		.dev = NULL,
-		.count = {0},	
+		.dev = NULL
+		.count = 0,	
 	},
 	.class = NULL,
 	.dev_no = 0,
