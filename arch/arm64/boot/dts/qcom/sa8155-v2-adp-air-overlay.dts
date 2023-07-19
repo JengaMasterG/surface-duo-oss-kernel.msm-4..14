@@ -13,6 +13,7 @@
 /dts-v1/;
 /plugin/;
 
+#include "sa8155-v2.dtsi"
 #include "sa8155-adp-common.dtsi"
 #include "sa8155-adp-star-display.dtsi"
 #include "sa8155-adp-star-display-shd.dtsi"

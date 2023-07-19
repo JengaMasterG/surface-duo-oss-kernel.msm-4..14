@@ -14,6 +14,7 @@
 #include <dt-bindings/clock/qcom,rpmh.h>
 #include <dt-bindings/interrupt-controller/arm-gic.h>
 
+#include "../qcom/sm8150-v2.dtsi"
 #include "surface-duo.dtsi"
 
 / {
